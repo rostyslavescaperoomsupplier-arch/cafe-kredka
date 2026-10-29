@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/food/barszcz.webp">
+<link rel="preload" as="image" href="assets/food/barszcz-wide.webp">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -33,6 +33,9 @@
     </nav>
     <div class="nav__actions">
       <a class="nav__tel" href="tel:+48506776342">506 776 342</a>
+      <a class="nav__call" href="tel:+48506776342" aria-label="Zadzwoń: 506 776 342">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h2.6l1.4 4-2 1.5a12 12 0 0 0 6.4 6.4l1.5-2 4 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+      </a>
       <button class="cart-btn" type="button" data-open-cart aria-label="Koszyk">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
         <span class="cart-btn__label">Koszyk</span>
@@ -55,9 +58,9 @@
         </div>
       </div>
       <div class="hero__media" aria-hidden="true">
-        <figure class="hero__img hero__img--a"><img src="assets/food/barszcz.webp" alt="" width="900" height="600"></figure>
-        <figure class="hero__img hero__img--b"><img src="assets/food/pierogi.webp" alt="" width="675" height="900"></figure>
-        <figure class="hero__img hero__img--c"><img src="assets/food/nalesniki.webp" alt="" width="675" height="900"></figure>
+        <figure class="hero__img hero__img--a"><img src="assets/food/barszcz-wide.webp" alt="" width="1200" height="900" fetchpriority="high"></figure>
+        <figure class="hero__img hero__img--b"><img src="assets/food/pierogi.webp" alt="" width="1000" height="1250"></figure>
+        <figure class="hero__img hero__img--c"><img src="assets/food/nalesniki.webp" alt="" width="1000" height="1250"></figure>
       </div>
     </div>
   </section>
@@ -122,11 +125,11 @@
   </section>
 
   <section class="gallery wrap" aria-label="Galeria dań">
-    <figure><img loading="lazy" src="assets/food/schabowy.webp" alt="Kotlet schabowy z purée i surówką z buraków" width="675" height="900"></figure>
-    <figure><img loading="lazy" src="assets/food/salatka-feta.webp" alt="Sałatka z fetą, pomidorkami i papryką" width="675" height="900"></figure>
-    <figure><img loading="lazy" src="assets/food/syrniki.webp" alt="Syrniki ze śmietaną" width="675" height="900"></figure>
-    <figure><img loading="lazy" src="assets/food/gulasz.webp" alt="Gulasz wieprzowy w sosie pomidorowym" width="675" height="900"></figure>
-    <figure><img loading="lazy" src="assets/food/jajka-boczek.webp" alt="Jajka sadzone z boczkiem" width="900" height="903"></figure>
+    <figure><img loading="lazy" src="assets/food/schabowy.webp" alt="Kotlet schabowy z purée i surówką z buraków" width="1000" height="1250"></figure>
+    <figure><img loading="lazy" src="assets/food/salatka-feta.webp" alt="Sałatka z fetą, pomidorkami i papryką" width="1000" height="1250"></figure>
+    <figure><img loading="lazy" src="assets/food/syrniki.webp" alt="Syrniki ze śmietaną" width="1000" height="1250"></figure>
+    <figure><img loading="lazy" src="assets/food/gulasz.webp" alt="Gulasz wieprzowy w sosie pomidorowym" width="1000" height="1250"></figure>
+    <figure><img loading="lazy" src="assets/food/jajka-boczek.webp" alt="Jajka sadzone z boczkiem" width="1000" height="1250"></figure>
   </section>
 
   <section class="reviews wrap" id="opinie" aria-labelledby="reviews-h">
@@ -188,6 +191,12 @@
     <div class="drawer__foot" data-cart-foot></div>
   </aside>
 </div>
+
+<button class="cartbar" type="button" data-open-cart data-cartbar hidden>
+  <span class="cartbar__count" data-cartbar-count></span>
+  <span class="cartbar__label">Zobacz koszyk</span>
+  <span class="cartbar__total" data-cartbar-total></span>
+</button>
 
 <div class="toast" data-toast role="status" aria-live="polite"></div>
 

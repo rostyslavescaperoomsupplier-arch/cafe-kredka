@@ -17,12 +17,12 @@
     bag: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>'
   };
   const addBtn = (it) => `<button class="add" type="button" data-add="${it.id}" aria-label="Dodaj do koszyka: ${esc(it.name)}">${icon.plus}</button>`;
-  const img = (it, w, h) => `<img loading="lazy" src="assets/food/${it.img}.webp" alt="${esc(it.name)}" width="${w}" height="${h}">`;
+  const img = (it, w, h, sq = false) => `<img loading="lazy" decoding="async" src="assets/food/${it.img}${sq ? "-sq" : ""}.webp" alt="${esc(it.name)}" width="${w}" height="${h}">`;
 
   // Popular
   $("[data-popular]").innerHTML = items.filter((i) => i.popular && i.img).map((it, n) => `
     <article class="pop reveal" style="--i:${n}">
-      <div class="pop__img">${img(it, 600, 500)}</div>
+      <div class="pop__img">${img(it, 1000, 1250)}</div>
       <div class="pop__body">
         <h3>${esc(it.name)}</h3>
         <div class="pop__row"><span class="price">${zl(it.price)}</span>${addBtn(it)}</div>
@@ -38,23 +38,34 @@
       <div class="menu__items">
         ${items.filter((i) => i.cat === c.id).map((it, n) => `
           <article class="dish ${it.img ? "dish--img" : ""} reveal" style="--i:${n % 4}">
-            ${it.img ? `<div class="dish__img">${img(it, 224, 224)}</div>` : ""}
-            <div class="dish__txt"><h4>${esc(it.name)}</h4><p>${esc(it.desc)}</p></div>
-            <div class="dish__side"><span class="price">${zl(it.price)}</span>${addBtn(it)}</div>
+            ${it.img ? `<div class="dish__img">${img(it, 480, 480, true)}</div>` : ""}
+            <div class="dish__txt">
+              <h4>${esc(it.name)}</h4>
+              <p>${esc(it.desc)}</p>
+              <div class="dish__foot"><span class="price">${zl(it.price)}</span>${addBtn(it)}</div>
+            </div>
           </article>`).join("")}
       </div>
     </div>`).join("");
 
   // Tabs scroll to category; active tab follows scroll.
+  // Only the tab strip scrolls horizontally here; scrollIntoView would also nudge the page.
+  const tabsEl = $("[data-tabs]");
   const tabs = $$("[data-tab]");
-  const setTab = (id) => tabs.forEach((t) => {
-    const on = t.dataset.tab === id;
-    t.setAttribute("aria-selected", on);
-    if (on) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
-  });
+  let activeTab = categories[0].id;
+  const setTab = (id) => {
+    if (id === activeTab) return;
+    activeTab = id;
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === id;
+      t.setAttribute("aria-selected", on);
+      if (on) tabsEl.scrollTo({ left: t.offsetLeft - (tabsEl.clientWidth - t.offsetWidth) / 2, behavior: "smooth" });
+    });
+  };
   tabs.forEach((t) => t.addEventListener("click", () => {
     const el = document.getElementById("kat-" + t.dataset.tab);
-    window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 136, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    const offset = $(".nav").offsetHeight + tabsEl.offsetHeight + 8;
+    window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - offset, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }));
   const catObs = new IntersectionObserver((es) => es.forEach((e) => {
     if (e.isIntersecting) setTab(e.target.id.slice(4));
@@ -101,8 +112,13 @@
   const count = () => Object.values(cart).reduce((a, b) => a + b, 0);
 
   const drawer = $("[data-drawer]");
+  const cartbar = $("[data-cartbar]");
   const render = () => {
     $("[data-cart-count]").textContent = count();
+    cartbar.hidden = !count();
+    document.body.classList.toggle("has-cart", count() > 0);
+    $("[data-cartbar-count]").textContent = count() === 1 ? "1 pozycja" : count() < 5 ? `${count()} pozycje` : `${count()} pozycji`;
+    $("[data-cartbar-total]").textContent = zl(total());
     const lines = Object.entries(cart);
     if (!lines.length) {
       $("[data-cart-body]").innerHTML = `<div class="empty">${icon.bag}<strong>Koszyk jest pusty</strong><span>Dodaj coś z menu. Minimalne zamówienie na dowóz to ${MIN_ORDER} zł.</span><a class="btn btn--ghost" href="#menu" data-close-cart>Przejdź do menu</a></div>`;
@@ -160,7 +176,7 @@
       cart[t.dataset.add] = (cart[t.dataset.add] || 0) + 1;
       save(); render();
       t.classList.remove("done"); void t.offsetWidth; t.classList.add("done");
-      const b = $(".cart-btn"); b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump");
+      for (const b of $$(".cart-btn, .cartbar")) { b.classList.remove("bump"); void b.offsetWidth; b.classList.add("bump"); }
       toast(`Dodano: ${fullName(t.dataset.add)}`);
     } else if (t.dataset.inc) {
       cart[t.dataset.inc]++; save(); render();
