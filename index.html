@@ -15,16 +15,30 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/food/barszcz-wide.webp">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 200 78">
+    <text x="46" y="21" class="logo__cafe">Cafe</text>
+    <text x="4" y="56" class="logo__word" textLength="186" lengthAdjust="spacingAndGlyphs">Kredka</text>
+    <g transform="translate(0 6) rotate(-2.5 100 61)">
+      <path d="M8 61 20 57.2v7.6Z" class="logo__wood"/>
+      <path d="M8 61 12.6 59.6v2.8Z" class="logo__lead"/>
+      <rect x="20" y="57.2" width="150" height="7.6" class="logo__body"/>
+      <path d="M20 59.7h150" class="logo__facet"/>
+      <rect x="170" y="57.2" width="7" height="7.6" class="logo__ferrule"/>
+      <rect x="177" y="57.2" width="10" height="7.6" rx="2.6" class="logo__eraser"/>
+    </g>
+  </symbol>
+</svg>
 <a class="skip" href="#menu">Przejdź do menu</a>
 
 <header class="nav" id="top">
   <div class="wrap nav__in">
-    <a href="#top" class="nav__logo" aria-label="Cafe Kredka, strona główna"><img src="assets/logo.png" alt="Cafe Kredka Food Box" width="600" height="373"></a>
+    <a href="#top" class="nav__logo" aria-label="Cafe Kredka, strona główna"><svg class="logo" role="img" aria-label="Cafe Kredka"><use href="#logo"/></svg></a>
     <nav class="nav__links" aria-label="Główna nawigacja">
       <a href="#menu">Menu</a>
       <a href="#promocje">Promocje</a>
@@ -169,7 +183,7 @@
 
 <footer class="foot">
   <div class="wrap foot__in">
-    <img src="assets/logo.png" alt="Cafe Kredka" width="600" height="373">
+    <svg class="logo logo--foot" role="img" aria-label="Cafe Kredka"><use href="#logo"/></svg>
     <p>Cafe Kredka, Żołnierska 50, 71-210 Szczecin</p>
     <p class="foot__links">
       <a href="https://www.cafekredka.pl/terms" target="_blank" rel="noopener">Regulamin</a>
