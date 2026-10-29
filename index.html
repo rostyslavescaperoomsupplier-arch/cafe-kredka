@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cafe Kredka | Domowe obiady w Szczecinie</title>
+<meta name="description" content="Domowe obiady, pierogi, naleśniki i barszcz z dowozem po Szczecinie. Cafe Kredka, Żołnierska 50. Pn-Pt 8:00-16:00.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.cafekredka.pl/">
+<meta name="theme-color" content="#f4f5f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111412" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Cafe Kredka | Domowe obiady w Szczecinie">
+<meta property="og:description" content="Pierogi, naleśniki, barszcz i obiady jak z domu. Dowóz po Szczecinie.">
+<meta property="og:image" content="assets/food/pierogi.webp">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/food/barszcz.webp">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#menu">Przejdź do menu</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__in">
+    <a href="#top" class="nav__logo" aria-label="Cafe Kredka, strona główna"><img src="assets/logo.png" alt="Cafe Kredka Food Box" width="600" height="373"></a>
+    <nav class="nav__links" aria-label="Główna nawigacja">
+      <a href="#menu">Menu</a>
+      <a href="#promocje">Promocje</a>
+      <a href="#jak-zamawiac">Jak zamawiać</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__tel" href="tel:+48506776342">506 776 342</a>
+      <button class="cart-btn" type="button" data-open-cart aria-label="Koszyk">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+        <span class="cart-btn__label">Koszyk</span>
+        <span class="cart-btn__count" data-cart-count>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <p class="status" data-status>Sprawdzamy godziny otwarcia</p>
+        <h1>Domowe obiady<br>w Szczecinie</h1>
+        <p class="hero__sub">Barszcz, pierogi lepione ręcznie, schabowy z purée. Gotujemy codziennie od rana i dowozimy na ciepło.</p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#menu">Zobacz menu</a>
+          <a class="btn btn--ghost" href="tel:+48506776342">Zadzwoń</a>
+        </div>
+      </div>
+      <div class="hero__media" aria-hidden="true">
+        <figure class="hero__img hero__img--a"><img src="assets/food/barszcz.webp" alt="" width="900" height="600"></figure>
+        <figure class="hero__img hero__img--b"><img src="assets/food/pierogi.webp" alt="" width="675" height="900"></figure>
+        <figure class="hero__img hero__img--c"><img src="assets/food/nalesniki.webp" alt="" width="675" height="900"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts wrap" aria-label="Najważniejsze informacje">
+    <div class="fact">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+      <div><strong>Pn-Pt, 8:00-16:00</strong><span>Sobota i niedziela zamknięte</span></div>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+      <div><strong>Dowóz po Szczecinie</strong><span>Minimalne zamówienie 40 zł</span></div>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg>
+      <div><strong>Gotówka, przelew, karta</strong><span>Płacisz przy odbiorze lub online</span></div>
+    </div>
+  </section>
+
+  <section class="popular" aria-labelledby="popular-h">
+    <div class="wrap">
+      <h2 id="popular-h">Najczęściej zamawiane</h2>
+    </div>
+    <div class="popular__track" data-popular></div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-h">
+    <div class="wrap">
+      <h2 id="menu-h">Menu</h2>
+      <p class="lead">Wszystko robimy na miejscu. Do obiadów zawsze dokładamy surówkę.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Kategorie menu" data-tabs></div>
+    <div class="wrap">
+      <div class="menu__grid" data-menu></div>
+    </div>
+  </section>
+
+  <section class="promo wrap" id="promocje" aria-label="Promocje">
+    <div class="promo__card promo__card--first">
+      <p class="promo__big">-10%</p>
+      <h3>na pierwsze zamówienie</h3>
+      <p>Zamów u nas pierwszy raz, a dostaniesz kupon rabatowy. Promocja wymaga zgody marketingowej.</p>
+    </div>
+    <div class="promo__card promo__card--stamps">
+      <h3>Co szóste zamówienie taniej</h3>
+      <p>Każde zamówienie to pieczątka ważna 12 miesięcy. Po pięciu dostajesz kupon -10% na kolejne. Pieczątki zbieramy na Twój numer telefonu.</p>
+      <ol class="stamps" aria-label="Karta pieczątek, przykład">
+        <li class="on"></li><li class="on"></li><li class="on"></li><li></li><li></li><li class="gift">-10%</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="steps" id="jak-zamawiac" aria-labelledby="steps-h">
+    <div class="wrap">
+      <h2 id="steps-h">Jak zamawiać</h2>
+      <ol class="steps__row">
+        <li><h3>Wybierz</h3><p>Dodaj dania do koszyka. Minimum na dowóz to 40 zł.</p></li>
+        <li><h3>Zamów</h3><p>Online w systemie lokalu albo telefonicznie pod 506 776 342.</p></li>
+        <li><h3>Odbierz</h3><p>Przywieziemy na ciepło albo odbierzesz sam przy Żołnierskiej 50.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="gallery wrap" aria-label="Galeria dań">
+    <figure><img loading="lazy" src="assets/food/schabowy.webp" alt="Kotlet schabowy z purée i surówką z buraków" width="675" height="900"></figure>
+    <figure><img loading="lazy" src="assets/food/salatka-feta.webp" alt="Sałatka z fetą, pomidorkami i papryką" width="675" height="900"></figure>
+    <figure><img loading="lazy" src="assets/food/syrniki.webp" alt="Syrniki ze śmietaną" width="675" height="900"></figure>
+    <figure><img loading="lazy" src="assets/food/gulasz.webp" alt="Gulasz wieprzowy w sosie pomidorowym" width="675" height="900"></figure>
+    <figure><img loading="lazy" src="assets/food/jajka-boczek.webp" alt="Jajka sadzone z boczkiem" width="900" height="903"></figure>
+  </section>
+
+  <section class="reviews wrap" id="opinie" aria-labelledby="reviews-h">
+    <h2 id="reviews-h">Opinie</h2>
+    <div class="reviews__row">
+      <blockquote><p>„Szybka realizacja zamówienia.”</p><footer>Tomek, 25 października 2026</footer></blockquote>
+      <blockquote><p>„Zamawianie online, fajna sprawa!”</p><footer>Mariusz, 22 października 2026</footer></blockquote>
+      <a class="reviews__google" href="https://www.google.com/maps/place/?q=place_id:ChIJ1Wyojr4OqkcRp6D1QFphTxs" target="_blank" rel="noopener">
+        <strong>Smakowało?</strong>
+        <span>Zostaw opinię w Google. Dla małego lokalu to naprawdę dużo znaczy.</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt" aria-labelledby="contact-h">
+    <div class="wrap contact__grid">
+      <div>
+        <h2 id="contact-h">Kontakt</h2>
+        <dl class="contact__list">
+          <div><dt>Adres</dt><dd>Żołnierska 50<br>71-210 Szczecin</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+48506776342">506 776 342</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:Vitalijanulevic@gmail.com">Vitalijanulevic@gmail.com</a></dd></div>
+          <div><dt>Facebook</dt><dd><a href="https://www.facebook.com/profile.php?id=61591460026686" target="_blank" rel="noopener">Cafe Kredka</a></dd></div>
+        </dl>
+        <table class="hours" aria-label="Godziny otwarcia">
+          <tbody data-hours></tbody>
+        </table>
+      </div>
+      <div class="contact__map">
+        <iframe title="Mapa: Cafe Kredka, Żołnierska 50, Szczecin" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=14.4862%2C53.4452%2C14.4962%2C53.4497&amp;layer=mapnik&amp;marker=53.44748%2C14.49125"></iframe>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=53.44748,14.49125" target="_blank" rel="noopener">Wyznacz trasę</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <img src="assets/logo.png" alt="Cafe Kredka" width="600" height="373">
+    <p>Cafe Kredka, Żołnierska 50, 71-210 Szczecin</p>
+    <p class="foot__links">
+      <a href="https://www.cafekredka.pl/terms" target="_blank" rel="noopener">Regulamin</a>
+      <a href="https://www.cafekredka.pl/privacy-policy" target="_blank" rel="noopener">Polityka prywatności</a>
+    </p>
+  </div>
+</footer>
+
+<div class="drawer" data-drawer hidden>
+  <div class="drawer__scrim" data-close-cart></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="cart-h">
+    <div class="drawer__head">
+      <h2 id="cart-h">Twój koszyk</h2>
+      <button class="icon-btn" type="button" data-close-cart aria-label="Zamknij koszyk">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" data-cart-body></div>
+    <div class="drawer__foot" data-cart-foot></div>
+  </aside>
+</div>
+
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<script src="assets/menu.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
